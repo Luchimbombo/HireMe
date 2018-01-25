@@ -16,7 +16,6 @@
 		<div class="container">
 		<a><img alt="" src="imagenes/hiremelogin.png"></a>	
 					<h1>Formulario de Login</h1>
-					<p>asdasd</p>
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-3 myform-cont">
 					<div class="myform-top">
