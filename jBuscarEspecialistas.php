@@ -14,42 +14,43 @@
 <?php
 //Proceso de conexión con la base de datos
 $conex = mysql_connect("localhost", "root", "administrador")
-		or die("No se pudo realizar la conexion");
-	mysql_select_db("basedatoshireme",$conex)
-		or die("ERROR con la base de datos");
+or die("No se pudo realizar la conexion");
+mysql_select_db("basedatoshireme", $conex)
+or die("ERROR con la base de datos");
 
 //Iniciar Sesión
 
 $codigo;
 session_start();
-	if(!empty($_POST['idboton'])) {
-   		$codigo = $_POST['idboton'];
-   
-		}
-		if (empty($_POST['idboton'])) {
-			$codigo = $_SESSION['idpro'];
+if (!empty($_POST['idboton'])) {
+    $codigo = $_POST['idboton'];
 
-		}
+}
+if (empty($_POST['idboton'])) {
+    $codigo = $_SESSION['idpro'];
+
+}
 //Validar si se está ingresando con sesión correctamente
-if (!$_SESSION){
-	header("location:login.php");	
+if (!$_SESSION) {
+    header("location:login.php");
 }
 ?>
-<body>		
+<body>
 	<header>
-		
+
 	</header>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      
+
       <a class="navbar-brand" href="pJefeProyecto.php"><img alt="" src="imagenes/Imagen1.png"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+      	<li><a href="eVerEspecialista.php">Gestión de Especialistas</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestión de Proyectos<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -58,7 +59,7 @@ if (!$_SESSION){
         </li>
         <li><a href="#">Reportes</a></li>
       </ul>
-      
+
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jefe de Proyecto <span class="caret"></span></a>
@@ -70,19 +71,20 @@ if (!$_SESSION){
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
-</nav>	
+</nav>
 	<div class="col-md-8 col-md-offset-2 myform-cont">
 
 	<?php
-		include("conexionbd.php");
-		$dato = $_SESSION['id'];
-		
-		//echo $dato;
-		//echo $_POST['idboton'];
-		//echo "asa ".$codigo." ess";
-		$sql_consultar= "SELECT p.IdProyecto, p.NombreProyecto, p.DescripcionProyecto, p.rutJefeP, p.CantNecesaria, j.nombreJefeP, j.apellidoJefeP FROM proyectos p LEFT JOIN jefeproyecto j ON p.rutJefeP = j.rutJefeP WHERE p.IdProyecto = '".$codigo."'";
-		$resultados=$conex->query($sql_consultar);
-	?>
+include "conexionbd.php";
+$dato = $_SESSION['id'];
+
+//echo $dato;
+//echo $_POST['idboton'];
+//echo "asa ".$codigo." ess";
+$sql_consultar = "SELECT p.IdProyecto, p.NombreProyecto, p.DescripcionProyecto, p.rutJefeP, p.CantNecesaria, j.nombreJefeP, j.apellidoJefeP FROM proyectos p LEFT JOIN jefeproyecto j ON p.rutJefeP = j.rutJefeP WHERE p.IdProyecto = '" . $codigo . "'";
+$resultados    = $conex->query($sql_consultar);
+?>
+		<br><br>
 		<h1>Descripcion de Proyecto</h1>
 		<br>
 
@@ -97,44 +99,44 @@ if (!$_SESSION){
 					</tr>
 			</thead>
 				<?php
-					if (is_array($resultados) || is_object($resultados)){
-					foreach ($resultados as $fila){
-				?>
+if (is_array($resultados) || is_object($resultados)) {
+    foreach ($resultados as $fila) {
+        ?>
 					<form method="post" action="jBuscarEspecialistas.php" name="form-lista">
 					<tbody>
 					<tr>
-						<td><?php echo $fila['NombreProyecto'];?></td>
-						<td><?php echo $fila['DescripcionProyecto'];?></td>
-						<td><?php echo $fila['nombreJefeP']." ".$fila['apellidoJefeP'];?></td>
-						<td><?php echo $fila['CantNecesaria'];?></td>
-						<input type="hidden" name="idpro" id="idpro" value="<?php $fila['IdProyecto']; ?>" />  
-						
+						<td><?php echo $fila['NombreProyecto']; ?></td>
+						<td><?php echo $fila['DescripcionProyecto']; ?></td>
+						<td><?php echo $fila['nombreJefeP'] . " " . $fila['apellidoJefeP']; ?></td>
+						<td><?php echo $fila['CantNecesaria']; ?></td>
+						<input type="hidden" name="idpro" id="idpro" value="<?php $fila['IdProyecto'];?>" />
+
 					</tr>
 					</tbody>
-					</form>	
+					</form>
 				<?php
-					$_SESSION['idpro'] = $fila['IdProyecto'];
-					}
-				}
-				
-				?>
+$_SESSION['idpro'] = $fila['IdProyecto'];
+    }
+}
+
+?>
 			</table>
-			</div></div>	
+			</div></div>
 <div class="col-md-8 col-md-offset-2 myform-cont">
 		<h1>Perfiles</h1>
 		<?php
-		include("conexionbd.php");
-		
-		$sql_consultar2= "SELECT * FROM perfil WHERE IdProyecto = '".$codigo."'";
-		$resultados2=$conex->query($sql_consultar2);
-		?>
-		
+include "conexionbd.php";
+
+$sql_consultar2 = "SELECT * FROM perfil WHERE IdProyecto = '" . $codigo . "'";
+$resultados2    = $conex->query($sql_consultar2);
+?>
+
 		<form method="post" action="jCrearPerfil.php" name="form-perfiles">
-		<button type="submit" name="idboton" id="<?php echo $fila['IdProyecto'];?>" value="<?php echo $fila['IdProyecto'];?>" class="btn btn-success">Crear perfil</button>
+		<button type="submit" name="idboton" id="<?php echo $fila['IdProyecto']; ?>" value="<?php echo $fila['IdProyecto']; ?>" class="btn btn-success">Crear perfil</button>
 		</form>
 		<br>
 		<div class="myform-bottom">
-			
+
 			<table class="table">
 			<thead>
 				<tr>
@@ -145,38 +147,38 @@ if (!$_SESSION){
 					</tr>
 			</thead>
 				<?php
-					if (is_array($resultados2) || is_object($resultados2)){
-					foreach ($resultados2 as $fila2){
-				?>
+if (is_array($resultados2) || is_object($resultados2)) {
+    foreach ($resultados2 as $fila2) {
+        ?>
 					<form method="post" action="jFiltrarEspecialista.php" name="form-perfiles">
 					<tbody>
 					<tr>
-						<td><?php echo $fila2['areaPerfil'];?></td>
-						<td><?php echo $fila2['cargoPerfil'];?></td>
+						<td><?php echo $fila2['areaPerfil']; ?></td>
+						<td><?php echo $fila2['cargoPerfil']; ?></td>
 						<input type="hidden" name="cargoPerfil" value="<?php echo $fila2['cargoPerfil']; ?>" />
-						<td><?php echo $fila2['remuneracionPerfil'];?></td>
-						<td><?php echo $fila2['habilidadPerfil'];?></td> 
+						<td><?php echo $fila2['remuneracionPerfil']; ?></td>
+						<td><?php echo $fila2['habilidadPerfil']; ?></td>
 						<input type="hidden" name="habilidadPerfil" value="<?php echo $fila2['habilidadPerfil']; ?>" />
-						<td><button type="submit" name="idboton" id="<?php echo $fila['IdProyecto'];?>" value="<?php echo $fila['IdProyecto'];?>" class="btn btn-success">Buscar personal</button></td>
-						
+						<td><button type="submit" name="idboton" id="<?php echo $fila['IdProyecto']; ?>" value="<?php echo $fila['IdProyecto']; ?>" class="btn btn-success">Buscar personal</button></td>
+
 					</tr>
 					</tbody>
-					</form>	
+					</form>
 				<?php
-					
-					}
-				}
-				
-				?>
+
+    }
+}
+
+?>
 			</table>
 			</div>	</div>
 			<div class="col-md-8 col-md-offset-2 myform-cont">
 			<?php
-                include("conexionbd.php");
-                $codigo = $_POST['idboton'];
-                $sql_consultar= "SELECT p.rutPersona, p.nombrePersona, p.ApellidoPatPersona, p.CiudadPersona, p.CargoPersona, p.HabilidadPersona FROM personas p LEFT JOIN solicitud s ON p.rutPersona = s.rutPersona WHERE s.idProyecto = '".$codigo."' AND s.estadoSolicitud = '2'";
-                $resultados=$conex->query($sql_consultar);
-                ?>
+include "conexionbd.php";
+$codigo        = $_POST['idboton'];
+$sql_consultar = "SELECT p.rutPersona, p.nombrePersona, p.ApellidoPatPersona, p.CiudadPersona, p.CargoPersona, p.HabilidadPersona FROM personas p LEFT JOIN solicitud s ON p.rutPersona = s.rutPersona WHERE s.idProyecto = '" . $codigo . "' AND s.estadoSolicitud = '2'";
+$resultados    = $conex->query($sql_consultar);
+?>
 			<h1>Personal Confirmado</h1>
                 <br>
 
@@ -194,31 +196,31 @@ if (!$_SESSION){
                         </tr>
                         </thead>
                         <?php
-                        if (is_array($resultados) || is_object($resultados)){
-                            foreach ($resultados as $fila){
-                                ?>
+if (is_array($resultados) || is_object($resultados)) {
+    foreach ($resultados as $fila) {
+        ?>
                                 <form method="post" action="enviarSolicitud.php" name="form-perfiles">
                                 <tbody>
                                     <tr>
-                                        <td><?php echo $fila['rutPersona'];?></td>
+                                        <td><?php echo $fila['rutPersona']; ?></td>
                                         <input type="hidden" name="rutPersona" value="<?php echo $fila['rutPersona']; ?>" />
-                                        <td><?php echo $fila['nombrePersona'];?></td>
-                                        <td><?php echo $fila['ApellidoPatPersona'];?></td>
-                                        <td><?php echo $fila['CiudadPersona'];?></td>
-                                        <td><?php echo $fila['CargoPersona'];?></td>
-                                        <td><?php echo $fila['HabilidadPersona'];?></td>
+                                        <td><?php echo $fila['nombrePersona']; ?></td>
+                                        <td><?php echo $fila['ApellidoPatPersona']; ?></td>
+                                        <td><?php echo $fila['CiudadPersona']; ?></td>
+                                        <td><?php echo $fila['CargoPersona']; ?></td>
+                                        <td><?php echo $fila['HabilidadPersona']; ?></td>
 
                                     </tr>
                                     </tbody>
                                 </form>
                                 <?php
-                            }
-                        }
+}
+}
 
-                        ?>
+?>
                     </table>
                 </div>
-                
+
 
 	</div>
 </body>

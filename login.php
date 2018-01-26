@@ -12,9 +12,9 @@
 	<link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
-	<div class="my-content">
+		<br><br>
 		<div class="container">
-		<a><img alt="" src="imagenes/hiremelogin.png"></a>	
+		<a><img alt="" src="imagenes/hiremelogin.png"></a>
 					<h1>Formulario de Login</h1>
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-3 myform-cont">
@@ -35,18 +35,17 @@
 							<div class="form-group">
 								<input type="password" name="form_password" placeholder="contraseña..." class="form-control" id="form_password">
 							</div>
-							
+
 							<td style="margin: 0 auto;"> <button type="submit" class="mybtn">Entrar</button></td>
 <br>
 							<td><a href="#">¿Olvidó su Clave?</a></td>
-						</form>	
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	
+
+
 </body>
 </html>
-
