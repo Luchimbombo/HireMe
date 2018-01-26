@@ -81,7 +81,7 @@ if (isset($_SESSION['nombre'])) {
 
     <div >
     <div >
-    <br ><br >
+    <br >
       <a class="btn btn-success" data-toggle="modal" data-target="#nuevoUsu">Nuevo Especialista</a><br><br>
       <table class='table'>
       <thead>
@@ -113,9 +113,6 @@ $mysqli = new mysqli("localhost", "root", "administrador", "basedatoshireme");
     ?>
           </table>
     </div>
-
-
-
     <div class="modal" id="nuevoUsu" tabindex="-1" role="dialog" aria-labellebdy="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
