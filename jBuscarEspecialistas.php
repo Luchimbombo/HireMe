@@ -55,6 +55,7 @@ if (!$_SESSION) {
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestión de Proyectos<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="jVerProyecto.php">Ver Proyectos</a></li>
+            <li><a href="#">Proyectos en Marcha</a></li>
           </ul>
         </li>
         <li><a href="#">Reportes</a></li>
@@ -84,7 +85,7 @@ $dato = $_SESSION['id'];
 $sql_consultar = "SELECT p.IdProyecto, p.NombreProyecto, p.DescripcionProyecto, p.rutJefeP, p.CantNecesaria, j.nombreJefeP, j.apellidoJefeP FROM proyectos p LEFT JOIN jefeproyecto j ON p.rutJefeP = j.rutJefeP WHERE p.IdProyecto = '" . $codigo . "'";
 $resultados    = $conex->query($sql_consultar);
 ?>
-		<br><br>
+		<br>
 		<h1>Descripcion de Proyecto</h1>
 		<br>
 

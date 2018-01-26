@@ -55,6 +55,7 @@ if (!$_SESSION) {
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestión de Proyectos<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="jVerProyecto.php">Ver Proyectos</a></li>
+            <li><a href="#">Proyectos en Marcha</a></li>
           </ul>
         </li>
         <li><a href="#">Reportes</a></li>
