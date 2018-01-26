@@ -1,7 +1,7 @@
-<?php
+﻿<?php
 //Proceso de conexión con la base de datos
 $conex = mysql_connect("localhost", "root", "administrador")
-		or die("No se pudo realizar la conexion");
+		or die("No se pudo realizar la conexion con la bd");
 	mysql_select_db("basedatoshireme",$conex)
 		or die("ERROR con la base de datos");
 
