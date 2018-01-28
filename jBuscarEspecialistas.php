@@ -200,16 +200,19 @@ $resultados    = $conex->query($sql_consultar);
 if (is_array($resultados) || is_object($resultados)) {
     foreach ($resultados as $fila) {
         ?>
-                                <form method="post" action="enviarSolicitud.php" name="form-perfiles">
+                                <form method="post" action="codigoBarra2.php" name="form-perfiles">
                                 <tbody>
                                     <tr>
                                         <td><?php echo $fila['rutPersona']; ?></td>
                                         <input type="hidden" name="rutPersona" value="<?php echo $fila['rutPersona']; ?>" />
+                                        <input type="hidden" name="nombrePersona" value="<?php echo $fila['nombrePersona']; ?>" />
+                                        <input type="hidden" name="apellidoPersona" value="<?php echo $fila['ApellidoPatPersona']; ?>" />
                                         <td><?php echo $fila['nombrePersona']; ?></td>
                                         <td><?php echo $fila['ApellidoPatPersona']; ?></td>
                                         <td><?php echo $fila['CiudadPersona']; ?></td>
                                         <td><?php echo $fila['CargoPersona']; ?></td>
                                         <td><?php echo $fila['HabilidadPersona']; ?></td>
+                                        <td><button type="submit" name="idboton2" id="<?php echo $fila['IdProyecto'];?>" value="<?php echo $fila['IdProyecto'];?>" class="btn btn-success">Generar Código Rápido</button></td>
 
                                     </tr>
                                     </tbody>
