@@ -17,9 +17,9 @@ $sql_consultar= "SELECT * FROM personas where rutPersona='$rut'";?>
 $resultados=$conex->query($sql_consultar);
 if (is_array($resultados) || is_object($resultados)){
 	foreach ($resultados as $fila){
-		echo "RUT: ".$fila['rutPersona']?> </br>
+		echo "<font size=5>RUT: ".$fila['rutPersona']?> </font></br>
         <img src="<?php echo "imagenes/".$fila['foto'] ; ?>" class="img-responsive" alt="" style="max-width: 200px; max-height: 200px" > </br>
-        <?php echo "Nombre: ".$fila['nombrePersona']." ".$fila['ApellidoPatPersona']." ".$fila['ApellidoMatPersona']?> </br>
+        <?php echo "Nombre: ".$fila['nombrePersona']." ".$fila['ApellidoPatPersona']." ".$fila['ApellidoMatPersona'] ?> </br>
         <?php echo "Ciudad: ".$fila['CiudadPersona'] ?> </br>
         <?php echo "Cargo: ".$fila['CargoPersona'] ?> </br>
         <?php echo "Habilidad: ".$fila['HabilidadPersona'] ?> </br>
