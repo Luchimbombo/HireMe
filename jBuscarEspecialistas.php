@@ -212,7 +212,7 @@ if (is_array($resultados) || is_object($resultados)) {
                                         <td><?php echo $fila['CiudadPersona']; ?></td>
                                         <td><?php echo $fila['CargoPersona']; ?></td>
                                         <td><?php echo $fila['HabilidadPersona']; ?></td>
-                                        <td><button type="submit" name="idboton2" id="<?php echo $fila['IdProyecto'];?>" value="<?php echo $fila['IdProyecto'];?>" class="btn btn-success">Generar Código Rápido</button></td>
+                                        <td><button type="submit" name="idboton2" id="<?php echo $fila['IdProyecto'];?>" value="<?php echo $fila['IdProyecto'];?>" class="btn btn-success">Generar Código </button></td>
 
                                     </tr>
                                     </tbody>
