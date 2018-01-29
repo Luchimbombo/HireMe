@@ -1,3 +1,27 @@
+<?php
+//Iniciar Sesión
+
+session_start();
+if(isset($_SESSION['idpro'])){
+	$codigo=$_SESSION['idpro'];
+	
+}
+if (isset($_POST['idboton'])) {
+    $codigo = $_POST['idboton'];
+	$_SESSION['idpro']=$codigo;
+
+}
+//Proceso de conexión con la base de datos
+$conex = mysql_connect("localhost", "root", "administrador")
+or die("No se pudo realizar la conexion");
+mysql_select_db("basedatoshireme", $conex)
+or die("ERROR con la base de datos");
+
+//Validar si se está ingresando con sesión correctamente
+if (!$_SESSION) {
+    header("location:login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,30 +35,6 @@
 	<link rel="stylesheet" href="css/custom.css">
 	<link rel="stylesheet" href="css/estilos.css">
 </head>
-<?php
-//Proceso de conexión con la base de datos
-$conex = mysql_connect("localhost", "root", "administrador")
-or die("No se pudo realizar la conexion");
-mysql_select_db("basedatoshireme", $conex)
-or die("ERROR con la base de datos");
-
-//Iniciar Sesión
-
-$codigo;
-session_start();
-if (!empty($_POST['idboton'])) {
-    $codigo = $_POST['idboton'];
-
-}
-if (empty($_POST['idboton'])) {
-    $codigo = $_SESSION['idpro'];
-
-}
-//Validar si se está ingresando con sesión correctamente
-if (!$_SESSION) {
-    header("location:login.php");
-}
-?>
 <body>
 	<header>
 
@@ -77,7 +77,7 @@ if (!$_SESSION) {
 
 	<?php
 include "conexionbd.php";
-$dato = $_SESSION['id'];
+//$dato = $_SESSION['id'];
 
 //echo $dato;
 //echo $_POST['idboton'];
@@ -103,7 +103,7 @@ $resultados    = $conex->query($sql_consultar);
 if (is_array($resultados) || is_object($resultados)) {
     foreach ($resultados as $fila) {
         ?>
-					<form method="post" action="jBuscarEspecialistas.php" name="form-lista">
+					
 					<tbody>
 					<tr>
 						<td><?php echo $fila['NombreProyecto']; ?></td>
@@ -114,7 +114,6 @@ if (is_array($resultados) || is_object($resultados)) {
 
 					</tr>
 					</tbody>
-					</form>
 				<?php
 $_SESSION['idpro'] = $fila['IdProyecto'];
     }
@@ -160,7 +159,7 @@ if (is_array($resultados2) || is_object($resultados2)) {
 						<td><?php echo $fila2['remuneracionPerfil']; ?></td>
 						<td><?php echo $fila2['habilidadPerfil']; ?></td>
 						<input type="hidden" name="habilidadPerfil" value="<?php echo $fila2['habilidadPerfil']; ?>" />
-						<td><button type="submit" name="idboton" id="<?php echo $fila['IdProyecto']; ?>" value="<?php echo $fila['IdProyecto']; ?>" class="btn btn-success">Buscar personal</button></td>
+						<td><button type="submit" name="idboton2" id="<?php echo $fila['IdProyecto']; ?>" value="<?php echo $fila['IdProyecto']; ?>" class="btn btn-success">Buscar personal</button></td>
 
 					</tr>
 					</tbody>
@@ -176,7 +175,7 @@ if (is_array($resultados2) || is_object($resultados2)) {
 			<div class="col-md-8 col-md-offset-2 myform-cont">
 			<?php
 include "conexionbd.php";
-$codigo        = $_POST['idboton'];
+//$codigo        = $_POST['idboton'];
 $sql_consultar = "SELECT p.rutPersona, p.nombrePersona, p.ApellidoPatPersona, p.CiudadPersona, p.CargoPersona, p.HabilidadPersona FROM personas p LEFT JOIN solicitud s ON p.rutPersona = s.rutPersona WHERE s.idProyecto = '" . $codigo . "' AND s.estadoSolicitud = '2'";
 $resultados    = $conex->query($sql_consultar);
 ?>
@@ -212,12 +211,12 @@ if (is_array($resultados) || is_object($resultados)) {
                                         <td><?php echo $fila['CiudadPersona']; ?></td>
                                         <td><?php echo $fila['CargoPersona']; ?></td>
                                         <td><?php echo $fila['HabilidadPersona']; ?></td>
-                                        <td><button type="submit" name="idboton2" id="<?php echo $fila['IdProyecto'];?>" value="<?php echo $fila['IdProyecto'];?>" class="btn btn-success">Generar Código </button></td>
+                                        <td><button type="submit" name="idboton3" id="<?php echo $fila['IdProyecto'];?>" value="<?php echo $fila['IdProyecto'];?>" class="btn btn-success">Generar Código </button></td>
 
                                     </tr>
                                     </tbody>
                                 </form>
-                                <?php
+                                <?php 
 }
 }
 
