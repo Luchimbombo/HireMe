@@ -30,10 +30,10 @@
 					<div class="myform-bottom">
 						<form method="post" action="logueame.php" name="form-ingreso">
 							<div class="form-group">
-								<input type="text" name="form_user" placeholder="usuario..." class="form-control" id="form_user">
+								<input type="text" name="form_user" placeholder="usuario..." class="form-control" id="form_user" required="required">
 							</div>
 							<div class="form-group">
-								<input type="password" name="form_password" placeholder="contraseña..." class="form-control" id="form_password">
+								<input type="password" name="form_password" placeholder="contraseña..." class="form-control" id="form_password" required="required">
 							</div>
 
 							<td style="margin: 0 auto;"> <button type="submit" class="mybtn">Entrar</button></td>
