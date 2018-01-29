@@ -1,7 +1,17 @@
 <?php
 
 session_start();
-$rut=$_POST['rutPersona'];
+
+if(!empty($_SESSION['rutPersonaElegida'])){
+	$codigo=$_SESSION['rutPersonaElegida'];
+	
+}
+if (!empty($_POST['rutPersona'])) {
+    $codigo = $_POST['rutPersona'];
+	$_SESSION['rutPersonaElegida']=$codigo;
+	unset($_POST['rutPersona']);
+}
+
 
 $conex = mysql_connect("localhost", "root", "administrador")
 or die("No se pudo realizar la conexion");
@@ -10,7 +20,7 @@ or die("ERROR con la base de datos");
 
 include("conexionbd.php");
 
-$sql_consultar= "SELECT * FROM personas where rutPersona='$rut'";?>
+$sql_consultar= "SELECT * FROM personas where rutPersona='$codigo'";?>
 </br>
 </br>
 <?php 
@@ -31,6 +41,10 @@ if (is_array($resultados) || is_object($resultados)){
 		}
 		}
 echo '<img src="php-barcode-master/barcode.php?text=';
-echo $rut;
+echo $codigo;
 echo '&size=40&codetype=Code39&print=true" name="fotoCodigo" id="fotoCodigo" />'; 
 		?>
+		</br>
+        </br>
+        </br>
+        <a href=jVerProyecto.php>Volver</a>
