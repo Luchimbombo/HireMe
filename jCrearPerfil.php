@@ -49,15 +49,15 @@
 <br>
     <h1>Crear nuevo perfil</h1>
     <?php
-$idproyecto = $_POST[''];
-echo $idproyecto;
+//$idproyecto = $_POST[''];
+//echo $idproyecto;
 ?>
       <div class="myform-bottom">
       <form action="crearPerfil.php" method="POST" name="form-perfiles">
-        Area: <input type="text" name="areaPerfil" class="form-control" required="required">
-        Cargo: <input type="text" name="cargoPerfil" class="form-control" required="required">
-        Remuneracion: <input type="text" name="remuneracionPerfil" class="form-control" required="required">
-        Habilidad: <input type="text" name="habilidadPerfil" class="form-control" required="required"> <br>
+        Area: <input type="text" name="areaPerfil" class="form-control" required>
+        Cargo: <input type="text" name="cargoPerfil" class="form-control" required>
+        Remuneracion: <input type="text" name="remuneracionPerfil" class="form-control" required>
+        Habilidad: <input type="text" name="habilidadPerfil" class="form-control" required> <br>
         <button type="submit" name="idboton" id="idproyecto" value="<?php echo $idproyecto; ?>" class="mybtn">Crear Perfil</button>
         </form>
       </div>
