@@ -77,18 +77,20 @@ if (isset($_SESSION['nombre'])) {
   <div class="col-sm-6 col-sm-offset-3 myform-cont">
   <br>
 
-    <h1>Listado de Especialistas Encontrados</h1>
+    <h1>Listado de Especialistas</h1>
 
     <div >
     <div >
     <br >
       <a class="btn btn-success" data-toggle="modal" data-target="#nuevoUsu">Nuevo Especialista</a><br><br>
-      <table class='table'>
+      <div class="myform-bottom">
+      <table class='table '>
       <thead>
         <tr>
           <th>Rut</th><th>Nombre</th><th>Apellido</th><th>Correo</th><th><span class="glyphicon glyphicon-wrench"></span></th>
         </tr>
-        <thead>
+      </thead>
+      <tbody>
 <?php
 $mysqli = new mysqli("localhost", "root", "administrador", "basedatoshireme");
     if ($mysqli->connect_errno) {
@@ -101,17 +103,21 @@ $mysqli = new mysqli("localhost", "root", "administrador", "basedatoshireme");
             echo "<tr>";
             echo "<td>$fila[0]</td><td>$fila[1]</td><td>$fila[2]</td><td>$fila[3]</td>";
             echo "<td>";
-            echo "<a data-toggle='modal' data-target='#editUsu' data-rut='" . $fila[0] . "' data-nombre='" . $fila[1] . "' data-apellidop='" . $fila[2] . "' data-apellidom='" . $fila[3] . "' data-ciudad='" . $fila[4] . "' data-sexo='" . $fila[5] . "' data-cargo='" . $fila[7] . "' data-habilidad='" . $fila[8] . "' data-correo='" . $fila[9] . "' data-telefono='" . $fila[10] . "' data-password='" . $fila[11] . "' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span>Editar</a> ";
-            echo "<a class='btn btn-danger' href='EliminaEspecialista.php?id=" . $fila[0] . "'><span class='glyphicon glyphicon-remove'></span>Eliminar</a>";
+            echo "<td><a class='btn btn-info' href=''><span class='glyphicon glyphicon-eye-open'></span>Ver</a></td>";
+            echo "<td><a data-toggle='modal' data-target='#editUsu' data-rut='" . $fila[0] . "' data-nombre='" . $fila[1] . "' data-apellidop='" . $fila[2] . "' data-apellidom='" . $fila[3] . "' data-ciudad='" . $fila[4] . "' data-sexo='" . $fila[5] . "' data-cargo='" . $fila[7] . "' data-habilidad='" . $fila[8] . "' data-correo='" . $fila[9] . "' data-telefono='" . $fila[10] . "' data-password='" . $fila[11] . "' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span>Editar</a></td> ";
+
+            echo "<td><a class='btn btn-danger' href='EliminaEspecialista.php?id=" . $fila[0] . "'><span class='glyphicon glyphicon-remove'></span>Eliminar</a></td>";
             echo "</td>";
             echo "</tr>";
         }
         $resultado->close();
+
     }
     $mysqli->close();
 
     ?>
-          </table>
+      </tbody>
+      </table>
     </div>
     <div class="modal" id="nuevoUsu" tabindex="-1" role="dialog" aria-labellebdy="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -125,46 +131,46 @@ $mysqli = new mysqli("localhost", "root", "administrador", "basedatoshireme");
                           <div class="form-group">
                             <div class="form-group">
                             <label for="nombre">Rut:</label>
-                            <input class="form-control" id="nombre" name="rut" type="text" placeholder="Insertar Nombre"></input>
+                            <input class="form-control" id="nombre" name="rut" type="text" placeholder="Insertar Rut" required="required"></input>
                           </div>
                             <label for="nombre">Nombre:</label>
-                            <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Insertar Nombre"></input>
+                            <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Insertar Nombre" required="required"></input>
                           </div>
                           <div class="form-group">
                             <label for="edad">Apellido paterno:</label>
-                            <input class="form-control" id="edad" name="apellidop" type="text" placeholder="Insertar Apellido"></input>
+                            <input class="form-control" id="edad" name="apellidop" type="text" placeholder="Insertar Apellido Paterno" required="required"></input>
+                          </div>
+                          <div class="form-group ">
+                            <label for="edad">Correo:</label>
+                            <input class="form-control" id="edad" name="apellidom" type="text" placeholder="Insertar Correo" required="required">
                           </div>
                           <div class="form-group">
-                            <label for="edad">Apellido materno:</label>
-                            <input class="form-control" id="edad" name="apellidom" type="text" placeholder="Insertar Apellido Materno"></input>
+                            <label for="direccion">Apellido Materno:</label>
+                            <input class="form-control" id="direccion" name="ciudad" type="text" placeholder="Insertar Apellido Materno" required="required"></input>
                           </div>
                           <div class="form-group">
                             <label for="direccion">Ciudad:</label>
-                            <input class="form-control" id="direccion" name="ciudad" type="text" placeholder="Insertar Ciudad"></input>
+                            <input class="form-control" id="direccion" name="sexo" type="text" placeholder="Insertar Ciudad" required="required"></input>
                           </div>
                           <div class="form-group">
-                            <label for="direccion">Sexo:</label>
-                            <input class="form-control" id="direccion" name="sexo" type="text" placeholder="Insertar Sexo"></input>
+                            <label for="direccion">Fecha de Registro:</label>
+                            <input class="form-control" id="direccion" name="cargo" type="text" placeholder="Insertar Fecha de Registro" required="required"></input>
                           </div>
                           <div class="form-group">
                             <label for="direccion">Cargo:</label>
-                            <input class="form-control" id="direccion" name="cargo" type="text" placeholder="Insertar Cargo"></input>
+                            <input class="form-control" id="direccion" name="habilidad" type="text" placeholder="Insertar Cargo" required="required"></input>
                           </div>
                           <div class="form-group">
                             <label for="direccion">Habilidad:</label>
-                            <input class="form-control" id="direccion" name="habilidad" type="text" placeholder="Insertar Habilidad"></input>
-                          </div>
-                          <div class="form-group">
-                            <label for="direccion">Correo:</label>
-                            <input class="form-control" id="direccion" name="correo" type="text" placeholder="Insertar Correo"></input>
+                            <input class="form-control" id="direccion" name="correo" type="text" placeholder="Insertar Habilidad" required="required"></input>
                           </div>
                           <div class="form-group">
                             <label for="direccion">Telefono:</label>
-                            <input class="form-control" id="direccion" name="telefono" type="text" placeholder="Insertar Telefono"></input>
+                            <input class="form-control" id="direccion" name="telefono" type="text" placeholder="Insertar Telefono" required="required"></input>
                           </div>
                           <div class="form-group">
                             <label for="direccion">Password:</label>
-                            <input class="form-control" id="direccion" name="password" type="text" placeholder="Insertar password"></input>
+                            <input class="form-control" id="direccion" name="password" type="text" placeholder="Insertar password" required="required"></input>
                           </div>
 
               <input type="submit" class="btn btn-success" value="Ingresar">
@@ -191,30 +197,30 @@ $mysqli = new mysqli("localhost", "root", "administrador", "basedatoshireme");
                               <div class="form-group">
                             <div class="form-group">
                             <label for="nombre">Rut:</label>
-                            <input class="form-control" id="rut" name="rut" type="text" placeholder="Insertar Nombre"></input>
+                            <input class="form-control" id="rut" name="rut" type="text" placeholder="Insertar Nombre" required="required"></input>
                           </div>
                             <label for="nombre">Nombre:</label>
-                            <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Insertar Nombre"></input>
+                            <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Insertar Nombre" required="required"></input>
                           </div>
                           <div class="form-group">
                             <label for="edad">Apellido paterno:</label>
-                            <input class="form-control" id="apellidop" name="apellidop" type="text" placeholder="Insertar Apellido"></input>
+                            <input class="form-control" id="apellidop" name="apellidop" type="text" placeholder="Insertar Apellido" required="required"></input>
                           </div>
                           <div class="form-group">
                             <label for="edad">Apellido materno:</label>
-                            <input class="form-control" id="apellidom" name="apellidom" type="text" placeholder="Insertar Apellido Materno"></input>
+                            <input class="form-control" id="apellidom" name="apellidom" type="text" placeholder="Insertar Apellido Materno" required="required"></input>
                           </div>
                           <div class="form-group">
                             <label for="direccion">Ciudad:</label>
-                            <input class="form-control" id="ciudad" name="ciudad" type="text" placeholder="Insertar Ciudad"></input>
+                            <input class="form-control" id="ciudad" name="ciudad" type="text" placeholder="Insertar Ciudad" required="required"></input>
                           </div>
                           <div class="form-group">
                             <label for="direccion">Sexo:</label>
-                            <input class="form-control" id="sexo" name="sexo" type="text" placeholder="Insertar Sexo"></input>
+                            <input class="form-control" id="sexo" name="sexo" type="text" placeholder="Insertar Sexo" required="required"></input>
                           </div>
                           <div class="form-group">
                             <label for="direccion">Cargo:</label>
-                            <input class="form-control" id="cargo" name="cargo" type="text" placeholder="Insertar Cargo"></input>
+                            <input class="form-control" id="cargo" name="cargo" type="text" placeholder="Insertar Cargo" required="required"></input>
                           </div>
                           <div class="form-group">
                             <label for="direccion">Habilidad:</label>
@@ -222,18 +228,18 @@ $mysqli = new mysqli("localhost", "root", "administrador", "basedatoshireme");
                           </div>
                           <div class="form-group">
                             <label for="direccion">Correo:</label>
-                            <input class="form-control" id="correo" name="correo" type="text" placeholder="Insertar Correo"></input>
+                            <input class="form-control" id="correo" name="correo" type="text" placeholder="Insertar Correo" required="required"></input>
                           </div>
                           <div class="form-group">
                             <label for="direccion">Telefono:</label>
-                            <input class="form-control" id="telefono" name="telefono" type="text" placeholder="Insertar Telefono"></input>
+                            <input class="form-control" id="telefono" name="telefono" type="text" placeholder="Insertar Telefono" required="required"></input>
                           </div>
                           <div class="form-group">
                             <label for="direccion">Password:</label>
-                            <input class="form-control" id="password" name="password" type="text" placeholder="Insertar password"></input>
+                            <input class="form-control" id="password" name="password" type="text" placeholder="Insertar password" required="required"></input>
                           </div>
 
-                  <input type="submit" class="btn btn-success">
+                  <input type="submit" class="btn btn-success" value="Actualizar Especialista">
                        </form>
                     </div>
                     <div class="modal-footer">
