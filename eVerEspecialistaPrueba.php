@@ -46,15 +46,17 @@ $(document).ready(function() {
 
 <div id="main2">
               <div >
+              <form action="pruebaEnvio.php" method="POST"> 
               <table id="example" class="display" cellspacing="0" width="100%">
                 
                  <!--  <table id="example" class="display" width="900" border="2" cellpadding="4" cellspacing="4" >-->
                   <thead>                  
                   <tr >
                    
-                    <th width="45" align="center">Rut</th>
-                    <th width="45" align="center">Nombre</th>
-                    <th width="45" align="center">Número</th>
+                    <th width="5" align="center">Seleccionar</th>
+                    <th width="30" align="center">Rut</th>
+                    <th width="30" align="center">Nombre</th>
+                    <th width="30" align="center">Número</th>
                     <th width="125" align="center">Cargo</th>
                     <th width="73" align="center">Dirección</th>
                    
@@ -76,34 +78,37 @@ $(document).ready(function() {
 	   ?>
                   <?php
   
-  while($Datos_productos=mysql_fetch_array($result_consulta))
+  while($Datos=mysql_fetch_array($result_consulta))
 		{
   ?>
                   <tr  class="alt">
                    
-                    
-                    <td align="center"><?php echo $Datos_productos['rut'];?></td>
-                    <td align="center"> <?php echo $Datos_productos['nombreCompleto'];?></td>
-                    <td align="center"><?php echo $Datos_productos['fono'];?></td>
-                    <td align="center"><?php echo $Datos_productos['cargo'];?></td>
+                    <td><label><input type="checkbox" align="absmiddle" name="datos[]" value="<?php echo $Datos['rut']." ".$Datos['nombreCompleto']." ".$Datos['fono']." ".$Datos['cargo'];?></label></td>"></td>
+                    <td align="center"><?php echo $Datos['rut'];?></td>
+                    <td align="center"> <?php echo $Datos['nombreCompleto'];?></td>
+                    <td align="center"><?php echo $Datos['fono'];?></td>
+                    <td align="center"><?php echo $Datos['cargo'];?></td>
                    
-                          <td align="center"><?php echo $Datos_productos['direccion'];?></td>
-                           <td align="center"><?php echo $Datos_productos['ciudad'];?></td>
-                           <td align="center"><?php echo $Datos_productos['venExamenMed'];?></td>
-                           <td align="center"><?php echo $Datos_productos['venInduccion'];?></td>
-                           <td align="center"><?php echo $Datos_productos['talla'];?></td>
-                           <td align="center"><?php echo $Datos_productos['bloqueo'];?></td>
-                           <td align="center"><?php echo $Datos_productos['fechaNacimiento'];?></td>
-                           <td align="center"><?php echo $Datos_productos['Nacionalidad'];?></td>
-                           <td align="center"><?php echo $Datos_productos['Salud'];?></td>
-                           <td align="center"><?php echo $Datos_productos['afp'];?></td>
+                          <td align="center"><?php echo $Datos['direccion'];?></td>
+                           <td align="center"><?php echo $Datos['ciudad'];?></td>
+                           <td align="center"><?php echo $Datos['venExamenMed'];?></td>
+                           <td align="center"><?php echo $Datos['venInduccion'];?></td>
+                           <td align="center"><?php echo $Datos['talla'];?></td>
+                           <td align="center"><?php echo $Datos['bloqueo'];?></td>
+                           <td align="center"><?php echo $Datos['fechaNacimiento'];?></td>
+                           <td align="center"><?php echo $Datos['Nacionalidad'];?></td>
+                           <td align="center"><?php echo $Datos['Salud'];?></td>
+                           <td align="center"><?php echo $Datos['afp'];?></td>
                   </tr>
                   <?php
    
 		}
 }
+
   ?>
                 </table>
+                <button type="submit" value="">Botón</button>
+</form>
               </div>
             </div>
          
