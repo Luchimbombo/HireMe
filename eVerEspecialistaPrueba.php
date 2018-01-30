@@ -5,7 +5,7 @@ session_start();
     $conex = mysql_connect("localhost", "root", "administrador")
     or die("No se pudo realizar la conexion exitosamente");
     mysql_select_db("basedatoshireme", $conex)
-    or die("ERROR con la base de datos");
+    or die("ERROR con la bd");
 
 //Iniciar Sesión
     session_start();
