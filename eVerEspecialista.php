@@ -54,7 +54,6 @@ if (isset($_SESSION['nombre'])) {
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestión de Proyectos<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="jVerProyecto.php">Ver Proyectos</a></li>
-            <li><a href="#">Proyectos en Marcha</a></li>
           </ul>
         </li>
         <li><a href="#">Reportes</a></li>
@@ -64,7 +63,7 @@ if (isset($_SESSION['nombre'])) {
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jefe de Proyecto <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Ver Perfil</a></li>
+            <li><a href="jVerMiCuenta.php">Ver Perfil</a></li>
             <li><a href="logout.php">Salir</a></li>
           </ul>
         </li>
@@ -84,7 +83,7 @@ if (isset($_SESSION['nombre'])) {
     <br >
       <a class="btn btn-success" data-toggle="modal" data-target="#nuevoUsu">Nuevo Especialista</a><br><br>
       <div class="myform-bottom">
-      <table class='table '>
+      <table class='table ' align="center">
       <thead>
         <tr>
           <th>Rut</th><th>Nombre</th><th>Apellido</th><th>Correo</th><th><span class="glyphicon glyphicon-wrench"></span></th>
