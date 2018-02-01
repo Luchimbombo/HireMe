@@ -10,7 +10,6 @@ if (isset($_POST['idboton'])) {
 	$_SESSION['idpro']=$codigo;
 
 }
-
 //Proceso de conexión con la base de datos
     $conex = mysql_connect("localhost", "root", "administrador")
     or die("No se pudo realizar la conexion exitosamente");
@@ -123,7 +122,7 @@ $(document).ready(function() {
 
   ?>
                 </table>
-                <button type="submit" value="" onclick="pregunta()">Botón</button>
+                <button type="submit" value="" onClick="pregunta()">Botón</button>
 </form>
               </div>
             </div>
