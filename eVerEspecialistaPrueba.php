@@ -131,7 +131,7 @@ function pregunta(){
 		alert('Datos enviados correctamente')
         return true;
     }
-	alert('Operación cancelada')
+	alert('Operación cancelada, Vuelva a seleccionar personal')
     return false;
 }
 </script>
