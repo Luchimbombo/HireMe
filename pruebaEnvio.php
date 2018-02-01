@@ -31,9 +31,12 @@ mysql_query($sql2);
 }
 ?>
 <script language = javascript>
-	alert("Los datos han sido guardados y enviados exitosamente")
-	self.location = "eVerEspecialistaPrueba.php" 
+	alert("Los datos han sido guardados y enviados exitosamente");
 </script>
+<?php 
+header("location:eVerEspecialistaPrueba.php");
+?>
+header("location:login.php");
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
