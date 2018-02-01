@@ -137,6 +137,7 @@ function pregunta(){
     return false;
 }
 </script>
+<<<<<<< HEAD
 <script>
 function seleccionar_todo(){ 
    for (i=0;i<document.formEnviar.elements.length;i++) 
