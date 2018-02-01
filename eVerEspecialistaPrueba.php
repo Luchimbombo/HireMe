@@ -115,7 +115,9 @@ $(document).ready(function() {
 
   ?>
                 </table>
-                <button type="submit" value="" >Botón</button>
+                <button type="submit" value="" >Enviar Solicitud</button>
+                <button type="button" onclick="seleccionar_todo()" value="" >Seleccionar todo</button>
+                <button type="button" onclick="desmarcar_todo()" value="" >Desmarcar todo</button>
 </form>
               </div>
             </div>
@@ -131,7 +133,28 @@ function pregunta(){
 		alert('Datos enviados correctamente')
         return true;
     }
-	alert('Operación cancelada')
+	alert('Operación cancelada, Vuelva a seleccionar personal')
     return false;
+}
+</script>
+<script>
+function seleccionar_todo(){ 
+   for (i=0;i<document.formEnviar.elements.length;i++) 
+      if(document.formEnviar.elements[i].type == "checkbox")	
+         document.formEnviar.elements[i].checked=1
+		 alert('Ha seleccionado todos los especialistas posibles, si desea quitar alguno desmarque al especialista')
+}
+</script>
+<script>
+function desmarcar_todo(){
+	if(confirm("¿Realmente desea desmarcar a todos los especialistas seleccionados?")){
+	for (i=0;i<document.formEnviar.elements.length;i++) 
+      if(document.formEnviar.elements[i].type == "checkbox")	
+         document.formEnviar.elements[i].checked=0 
+	return true;	
+	}else{
+	alert('Ha desmarcado todos los especialistas posibles.')
+	return false;
+}
 }
 </script>
