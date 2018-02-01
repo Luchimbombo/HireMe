@@ -26,13 +26,6 @@ if (isset($_POST['idboton'])) {
 	
 if (isset($_SESSION['nombre'])) {
     ?>
-<script language="JavaScript"> 
-function pregunta(){ 
-    if (confirm('¿Estas seguro de enviar la solicitud a los especialistas seleccionados?')){ 
-       document.formEnviar.submit() 
-    } 
-} 
-</script>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -61,7 +54,7 @@ $(document).ready(function() {
 
 <div id="main2">
               <div >
-              <form action="pruebaEnvio.php" method="POST" name="formEnviar"> 
+              <form action="pruebaEnvio.php" method="POST" name="formEnviar" onsubmit="return pregunta()"> 
               <table id="example" class="display" cellspacing="0" width="100%">
                 
                  <!--  <table id="example" class="display" width="900" border="2" cellpadding="4" cellspacing="4" >-->
@@ -122,7 +115,7 @@ $(document).ready(function() {
 
   ?>
                 </table>
-                <button type="submit" value="" onClick="pregunta()">Botón</button>
+                <button type="submit" value="" >Botón</button>
 </form>
               </div>
             </div>
@@ -131,3 +124,14 @@ $(document).ready(function() {
 
 </body>
 </html>
+<script>
+function pregunta(){  
+    if(confirm("¿Está seguro de enviar las notificaciones al personal seleccionado?"))
+    {
+		alert('Datos enviados correctamente')
+        return true;
+    }
+	alert('Operación cancelada')
+    return false;
+}
+</script>
