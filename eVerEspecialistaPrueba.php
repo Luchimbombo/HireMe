@@ -1,6 +1,16 @@
 ﻿<?php
 session_start();
 
+if(isset($_SESSION['idpro'])){
+	$codigo=$_SESSION['idpro'];
+	
+}
+if (isset($_POST['idboton'])) {
+    $codigo = $_POST['idboton'];
+	$_SESSION['idpro']=$codigo;
+
+}
+
 //Proceso de conexión con la base de datos
     $conex = mysql_connect("localhost", "root", "administrador")
     or die("No se pudo realizar la conexion exitosamente");
@@ -17,7 +27,13 @@ session_start();
 	
 if (isset($_SESSION['nombre'])) {
     ?>
-
+<script language="JavaScript"> 
+function pregunta(){ 
+    if (confirm('¿Estas seguro de enviar la solicitud a los especialistas seleccionados?')){ 
+       document.formEnviar.submit() 
+    } 
+} 
+</script>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -46,7 +62,7 @@ $(document).ready(function() {
 
 <div id="main2">
               <div >
-              <form action="pruebaEnvio.php" method="POST"> 
+              <form action="pruebaEnvio.php" method="POST" name="formEnviar"> 
               <table id="example" class="display" cellspacing="0" width="100%">
                 
                  <!--  <table id="example" class="display" width="900" border="2" cellpadding="4" cellspacing="4" >-->
@@ -83,7 +99,7 @@ $(document).ready(function() {
   ?>
                   <tr  class="alt">
                    
-                    <td><label><input type="checkbox" align="absmiddle" name="datos[]" value="<?php echo $Datos['rut']." ".$Datos['nombreCompleto']." ".$Datos['fono']." ".$Datos['cargo'];?></label></td>"></td>
+                    <td><label><input type="checkbox" align="absmiddle" name="datos[]" value="<?php echo $Datos['idTrabajador'];?></label></td>"></td>
                     <td align="center"><?php echo $Datos['rut'];?></td>
                     <td align="center"> <?php echo $Datos['nombreCompleto'];?></td>
                     <td align="center"><?php echo $Datos['fono'];?></td>
@@ -92,12 +108,12 @@ $(document).ready(function() {
                           <td align="center"><?php echo $Datos['direccion'];?></td>
                            <td align="center"><?php echo $Datos['ciudad'];?></td>
                            <td align="center"><?php echo $Datos['venExamenMed'];?></td>
-                           <td align="center"><?php echo $Datos['venInduccion'];?></td>
+                           <td align="center"><?php echo $Datos['venInd'];?></td>
                            <td align="center"><?php echo $Datos['talla'];?></td>
                            <td align="center"><?php echo $Datos['bloqueo'];?></td>
                            <td align="center"><?php echo $Datos['fechaNacimiento'];?></td>
-                           <td align="center"><?php echo $Datos['Nacionalidad'];?></td>
-                           <td align="center"><?php echo $Datos['Salud'];?></td>
+                           <td align="center"><?php echo $Datos['nacionalidad'];?></td>
+                           <td align="center"><?php echo $Datos['salud'];?></td>
                            <td align="center"><?php echo $Datos['afp'];?></td>
                   </tr>
                   <?php
@@ -107,7 +123,7 @@ $(document).ready(function() {
 
   ?>
                 </table>
-                <button type="submit" value="">Botón</button>
+                <button type="submit" value="" onclick="pregunta()">Botón</button>
 </form>
               </div>
             </div>
