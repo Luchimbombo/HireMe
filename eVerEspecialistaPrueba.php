@@ -137,8 +137,6 @@ function pregunta(){
     return false;
 }
 </script>
-<<<<<<< HEAD
-<<<<<<< HEAD
 <script>
 function seleccionar_todo(){ 
    for (i=0;i<document.formEnviar.elements.length;i++) 
@@ -160,5 +158,4 @@ function desmarcar_todo(){
 }
 }
 </script>
-=======
->>>>>>> 4b9125945adfd98e68c1242af776980097d683e0
+
