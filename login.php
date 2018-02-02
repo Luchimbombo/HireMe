@@ -33,7 +33,7 @@
 								<input  type="text" maxlength="10" autofocus="autofocus" name="form_user" placeholder="Rut usuario..." class="form-control" id="form_user"  required oninput="checkRut(this)" >
 							</div>
 							<div class="form-group">
-								<input type="password" name="form_password" maxlength="10" minlength="3" placeholder="Contraseña..." class="form-control" id="form_password" required="required">
+								<input type="password" name="form_password" maxlength="15" minlength="3" placeholder="Contraseña..." class="form-control" id="form_password" required="required">
 							</div>
 
 							<td style="margin: 0 auto;"> <button type="submit" class="mybtn">Entrar</button></td>
