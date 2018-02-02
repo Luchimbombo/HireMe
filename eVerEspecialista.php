@@ -73,8 +73,7 @@ if (isset($_SESSION['nombre'])) {
 </nav>
 
   <div>
-  <div class="col-sm-6 col-sm-offset-3 myform-cont">
-  <br>
+  <br><br>
 
     <h1>Listado de Especialistas</h1>
 
@@ -86,7 +85,7 @@ if (isset($_SESSION['nombre'])) {
       <table class='table ' align="center">
       <thead>
         <tr>
-          <th>Rut</th><th>Nombre</th><th>Apellido</th><th>Correo</th><th><span class="glyphicon glyphicon-wrench"></span></th>
+          <td>Rut</td><td>Nombre</td><td>Apellido</td><td>Correo</td><td><span class="glyphicon glyphicon-wrench"></span></td>
         </tr>
       </thead>
       <tbody>
@@ -102,11 +101,11 @@ $mysqli = new mysqli("localhost", "root", "administrador", "basedatoshireme");
             echo "<tr>";
             echo "<td>$fila[0]</td><td>$fila[1]</td><td>$fila[2]</td><td>$fila[3]</td>";
             echo "<td>";
-            echo "<td><a class='btn btn-info' href=''><span class='glyphicon glyphicon-eye-open'></span>Ver</a></td>";
-            echo "<td><a data-toggle='modal' data-target='#editUsu' data-rut='" . $fila[0] . "' data-nombre='" . $fila[1] . "' data-apellidop='" . $fila[2] . "' data-apellidom='" . $fila[3] . "' data-ciudad='" . $fila[4] . "' data-sexo='" . $fila[5] . "' data-cargo='" . $fila[7] . "' data-habilidad='" . $fila[8] . "' data-correo='" . $fila[9] . "' data-telefono='" . $fila[10] . "' data-password='" . $fila[11] . "' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span>Editar</a></td> ";
+            echo "<a class='btn btn-info' href='#'><span class='glyphicon glyphicon-eye-open'></span>Ver</a>";
+            echo "<a data-toggle='modal' data-target='#editUsu' data-rut='" . $fila[0] . "' data-nombre='" . $fila[1] . "' data-apellidop='" . $fila[2] . "' data-apellidom='" . $fila[3] . "' data-ciudad='" . $fila[4] . "' data-sexo='" . $fila[5] . "' data-cargo='" . $fila[7] . "' data-habilidad='" . $fila[8] . "' data-correo='" . $fila[9] . "' data-telefono='" . $fila[10] . "' data-password='" . $fila[11] . "' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span>Editar</a> ";
 
-            echo "<td><a class='btn btn-danger' href='EliminaEspecialista.php?id=" . $fila[0] . "'><span class='glyphicon glyphicon-remove'></span>Eliminar</a></td>";
-            echo "</td>";
+            echo "<a class='btn btn-danger' href='EliminaEspecialista.php?id=" . $fila[0] . "'><span class='glyphicon glyphicon-remove'></span>Eliminar</a>";
+
             echo "</tr>";
         }
         $resultado->close();

@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98d2a209-9d96-4276-87ad-120392a87720" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/login.php" afterPath="$PROJECT_DIR$/login.php" />
+      <change beforePath="$PROJECT_DIR$/eVerEspecialista.php" afterPath="$PROJECT_DIR$/eVerEspecialista.php" />
+      <change beforePath="$PROJECT_DIR$/pruebaEnvio.php" afterPath="$PROJECT_DIR$/pruebaEnvio.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -208,7 +207,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../empleados" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RunDashboard">
@@ -242,12 +241,12 @@
       <workItem from="1511925478485" duration="103000" />
       <workItem from="1511925609300" duration="3889000" />
       <workItem from="1516607581291" duration="414000" />
-      <workItem from="1517541610656" duration="1073000" />
+      <workItem from="1517541610656" duration="1678000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8511000" />
+    <option name="totallyTimeSpent" value="9116000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
