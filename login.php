@@ -30,14 +30,25 @@
 					<div class="myform-bottom">
 						<form method="post" action="logueame.php" name="form-ingreso">
 							<div class="form-group">
-								<input type="text" name="form_user" placeholder="usuario..." class="form-control" id="form_user" required="required">
+								<input  type="text" maxlength="10" autofocus="autofocus" name="form_user" placeholder="Rut usuario..." class="form-control" id="form_user"  required oninput="checkRut(this)" >
 							</div>
 							<div class="form-group">
-								<input type="password" name="form_password" placeholder="contraseña..." class="form-control" id="form_password" required="required">
+								<input type="password" name="form_password" maxlength="10" minlength="13" placeholder="Contraseña..." class="form-control" id="form_password" required="required">
 							</div>
 
 							<td style="margin: 0 auto;"> <button type="submit" class="mybtn">Entrar</button></td>
-<br>
+							<script src="js\validarRUT.js"></script>
+							 <script>
+								function justNumbers(e)
+        						{
+							       var keynum = window.event ? window.event.keyCode : e.which;
+							       if ((keynum == 8) || (keynum == 46))
+							       return true;
+
+							       return /\d/.test(String.fromCharCode(keynum));
+							    }
+							</script>
+							<br>
 							<td><a href="#">¿Olvidó su Clave?</a></td>
 						</form>
 					</div>
