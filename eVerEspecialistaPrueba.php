@@ -47,6 +47,11 @@ $(document).ready(function() {
     <div class="navbar-header">
 
       <a class="navbar-brand" href="pJefeProyecto.php"><img alt="" src="imagenes/Imagen1.png"></a>
+      </br>
+      </br>
+      <a href="jBuscarEspecialistasPrueba.php">Volver</a>
+      </br>
+      </br>
     </div>
     </div>
 
