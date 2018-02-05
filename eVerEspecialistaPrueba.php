@@ -115,6 +115,9 @@ $(document).ready(function() {
 			if($ven['1']>$fecha['mon']&&$ven['0']==$fecha['year']){
 					$color='#00FF00';
 				}
+				if(($ven['1']-1)==$fecha['mon']&&$ven['0']==$fecha['year']){
+					$color='#FFFF00';
+				}
 			if($ven['1']<$fecha['mon']&&$ven['0']==$fecha['year']){
 					$color='#FF0000';
 				}
@@ -124,10 +127,13 @@ $(document).ready(function() {
 				if($ven['2']<$fecha['mday']&&$ven['0']==$fecha['year']&&$ven['1']==$fecha['mon']){
 						$color='#FF0000';
 				}
+				if($ven['1']==$fecha['mon']&&$ven['0']==$fecha['year']){
+					$color='#FFFF00';
+				}
 				
 				
 				//Colores para vencimiento induccion
-				if($ind['0']>$fecha['year']){
+			if($ind['0']>$fecha['year']){
 				$color2='#00FF00';
 				//verde
 			}
@@ -137,6 +143,9 @@ $(document).ready(function() {
 			if($ind['1']>$fecha['mon']&&$ind['0']==$fecha['year']){
 					$color2='#00FF00';
 				}
+				if(($ind['1']-1)==$fecha['mon']&&$ind['0']==$fecha['year']){
+					$color2='#FFFF00';
+				}
 			if($ind['1']<$fecha['mon']&&$ind['0']==$fecha['year']){
 					$color2='#FF0000';
 				}
@@ -145,6 +154,9 @@ $(document).ready(function() {
 				}
 				if($ind['2']<$fecha['mday']&&$ind['0']==$fecha['year']&&$ind['1']==$fecha['mon']){
 						$color2='#FF0000';
+				}
+				if($ind['1']==$fecha['mon']&&$ind['0']==$fecha['year']){
+					$color2='#FFFF00';
 				}
 				
 				//vencimiento para el bloqueo
@@ -159,6 +171,9 @@ $(document).ready(function() {
 			if($bloq['1']>$fecha['mon']&&$bloq['0']==$fecha['year']){
 					$color3='#00FF00';
 				}
+				if(($bloq['1']-1)==$fecha['mon']&&$bloq['0']==$fecha['year']){
+					$color3='#FFFF00';
+				}
 			if($bloq['1']<$fecha['mon']&&$bloq['0']==$fecha['year']){
 					$color3='#FF0000';
 				}
@@ -167,6 +182,9 @@ $(document).ready(function() {
 				}
 				if($bloq['2']<$fecha['mday']&&$bloq['0']==$fecha['year']&&$bloq['1']==$fecha['mon']){
 						$color3='#FF0000';
+				}
+				if($bloq['1']==$fecha['mon']&&$bloq['0']==$fecha['year']){
+					$color3='#FFFF00';
 				}
 				
 				
