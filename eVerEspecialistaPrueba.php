@@ -10,6 +10,14 @@ if (isset($_POST['idboton'])) {
 	$_SESSION['idpro']=$codigo;
 
 }
+//Crear fecha actual
+
+date_default_timezone_set('Chile/Continental');
+$hoy      = date_default_timezone_get();
+$fecha    = getdate();
+$conv     = array_merge((array) $fecha['year'], (array) $fecha['mon'], (array) $fecha['mday']);
+$fechaHoy = implode("-", $conv);
+
 //Proceso de conexión con la base de datos
     $conex = mysql_connect("localhost", "root", "administrador")
     or die("No se pudo realizar la conexion exitosamente");
@@ -86,28 +94,100 @@ $(document).ready(function() {
                   </thead>
                   <?php
 	   
-	    $sql_consulta="select * from trabajador";
+	    $sql_consulta="SELECT * FROM trabajador WHERE DisfechaTermino <='".$fechaHoy."'";
 		$result_consulta=mysql_query($sql_consulta);
 	   ?>
                   <?php
   
   while($Datos=mysql_fetch_array($result_consulta))
 		{
+			$ven=explode('-',$Datos['venExamenMed']);
+			$ind=explode('-',$Datos['venInd']);
+			$bloq=explode('-',$Datos['bloqueo']);
+			//Colores para vencimiento examen medico
+			if($ven['0']>$fecha['year']){
+				$color='#00FF00';
+				//verde
+			}
+			if($ven['0']<$fecha['year']){
+				$color='#FF0000';
+			}
+			if($ven['1']>$fecha['mon']&&$ven['0']==$fecha['year']){
+					$color='#00FF00';
+				}
+			if($ven['1']<$fecha['mon']&&$ven['0']==$fecha['year']){
+					$color='#FF0000';
+				}
+			if($ven['2']>$fecha['mday']&&$ven['0']==$fecha['year']&&$ven['1']==$fecha['mon']){
+						$color='#00FF00';
+				}
+				if($ven['2']<$fecha['mday']&&$ven['0']==$fecha['year']&&$ven['1']==$fecha['mon']){
+						$color='#FF0000';
+				}
+				
+				
+				//Colores para vencimiento induccion
+				if($ind['0']>$fecha['year']){
+				$color2='#00FF00';
+				//verde
+			}
+			if($ind['0']<$fecha['year']){
+				$color2='#FF0000';
+			}
+			if($ind['1']>$fecha['mon']&&$ind['0']==$fecha['year']){
+					$color2='#00FF00';
+				}
+			if($ind['1']<$fecha['mon']&&$ind['0']==$fecha['year']){
+					$color2='#FF0000';
+				}
+			if($ind['2']>$fecha['mday']&&$ind['0']==$fecha['year']&&$ind['1']==$fecha['mon']){
+						$color2='#00FF00';
+				}
+				if($ind['2']<$fecha['mday']&&$ind['0']==$fecha['year']&&$ind['1']==$fecha['mon']){
+						$color2='#FF0000';
+				}
+				
+				//vencimiento para el bloqueo
+				
+				if($bloq['0']>$fecha['year']){
+				$color3='#00FF00';
+				//verde
+			}
+			if($bloq['0']<$fecha['year']){
+				$color3='#FF0000';
+			}
+			if($bloq['1']>$fecha['mon']&&$bloq['0']==$fecha['year']){
+					$color3='#00FF00';
+				}
+			if($bloq['1']<$fecha['mon']&&$bloq['0']==$fecha['year']){
+					$color3='#FF0000';
+				}
+			if($bloq['2']>$fecha['mday']&&$bloq['0']==$fecha['year']&&$bloq['1']==$fecha['mon']){
+						$color3='#00FF00';
+				}
+				if($bloq['2']<$fecha['mday']&&$bloq['0']==$fecha['year']&&$bloq['1']==$fecha['mon']){
+						$color3='#FF0000';
+				}
+				
+				
+			
+				
+			
   ?>
                   <tr  class="alt">
                    
                     <td><label><input type="checkbox" align="absmiddle" name="datos[]" value="<?php echo $Datos['idTrabajador'];?></label></td>"></td>
                     <td align="center"><?php echo $Datos['rut'];?></td>
-                    <td align="center"> <?php echo $Datos['nombreCompleto'];?></td>
+                    <td align="center" > <?php echo $Datos['nombreCompleto'];?></td>
                     <td align="center"><?php echo $Datos['fono'];?></td>
                     <td align="center"><?php echo $Datos['cargo'];?></td>
                    
                           <td align="center"><?php echo $Datos['direccion'];?></td>
                            <td align="center"><?php echo $Datos['ciudad'];?></td>
-                           <td align="center"><?php echo $Datos['venExamenMed'];?></td>
-                           <td align="center"><?php echo $Datos['venInd'];?></td>
+                            <td align="center" bgcolor="<?php echo $color; ?>"><?php echo $Datos['venExamenMed'];?></td>
+                           <td align="center" bgcolor="<?php echo $color2; ?>"><?php echo $Datos['venInd'];?></td>
                            <td align="center"><?php echo $Datos['talla'];?></td>
-                           <td align="center"><?php echo $Datos['bloqueo'];?></td>
+                           <td align="center" bgcolor="<?php echo $color3; ?>"><?php echo $Datos['bloqueo'];?></td>
                            <td align="center"><?php echo $Datos['fechaNacimiento'];?></td>
                            <td align="center"><?php echo $Datos['nacionalidad'];?></td>
                            <td align="center"><?php echo $Datos['salud'];?></td>
